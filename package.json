@@ -1,0 +1,17 @@
+{
+  "name": "natureremoairconcontrol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chikuwa111",
+  "license": "ISC",
+  "devDependencies": {
+    "@google/clasp": "^2.2.1",
+    "@types/google-apps-script": "0.0.54",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.3"
+  }
+}
