@@ -28,7 +28,7 @@ const validateRequest = (param: Parameter): [boolean, string] => {
   // ここでリクエストが自分のslackからのものかチェックしたいが、
   // tokenはdeprecatedかつheaderもdoPostでは取れないので厳しい
   const power = param.text.split(' ')[0].toLowerCase();
-  if (!['on', 'off'].includes(power)) {
+  if (power != 'on' && power != 'off') {
     return [false, 'Invalid parameter'];
   }
   return [true, ''];
