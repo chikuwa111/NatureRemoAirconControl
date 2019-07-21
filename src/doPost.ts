@@ -10,7 +10,7 @@ function doPost(
   // ここでリクエストが自分のslackからのものかチェックしたいが、
   // tokenはdeprecatedかつheaderもdoPostでは取れないので厳しい
 
-  const [_, power, time, type] = param.text.split(' ');
+  const [power, time, type] = param.text.split(' ');
 
   const response = {
     text: `power: ${power}, time: ${time}, type: ${type}`,
