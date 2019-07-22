@@ -30,10 +30,12 @@ function cron() {
 
   if (onDatetime != null && new Date() > new Date(onDatetime)) {
     const text = on();
+    properties.deleteProperty('onDatetime');
     Logger.log(text);
   }
   if (offDatetime != null && new Date() > new Date(offDatetime)) {
     const text = off();
+    properties.deleteProperty('offDatetime');
     Logger.log(text);
   }
 }
