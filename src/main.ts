@@ -1,5 +1,3 @@
-import * as dayjs from 'dayjs';
-
 type Parameter = {
   text: string;
 };
@@ -13,8 +11,8 @@ function doPost(
   let text = '';
   try {
     const param = e.parameter as Parameter;
-    const [action, datetime] = param.text.split(' ').map(s => s.toLowerCase());
-    text = execPostAction(action, datetime);
+    const [action, datetime] = param.text.split(' ');
+    text = execPostAction(action.toLowerCase(), datetime);
   } catch (err) {
     text = err.message;
   }
@@ -30,11 +28,11 @@ function cron() {
   const onDatetime = properties.getProperty('onDatetime');
   const offDatetime = properties.getProperty('offDatetime');
 
-  if (onDatetime != null && dayjs().isAfter(dayjs(onDatetime))) {
+  if (onDatetime != null && new Date() > new Date(onDatetime)) {
     const text = on();
     console.log(text);
   }
-  if (offDatetime != null && dayjs().isAfter(dayjs(offDatetime))) {
+  if (offDatetime != null && new Date() > new Date(offDatetime)) {
     const text = off();
     console.log(text);
   }
@@ -72,7 +70,7 @@ const reset = (): string => {
 };
 
 const registerOn = (datetime: string): string => {
-  if (!dayjs(datetime).isValid()) {
+  if (new Date(datetime).toString() == 'Invalid Date') {
     throw new Error('datetime is invalid.');
   }
   const properties = PropertiesService.getScriptProperties();
@@ -81,7 +79,7 @@ const registerOn = (datetime: string): string => {
 };
 
 const registerOff = (datetime: string): string => {
-  if (!dayjs(datetime).isValid()) {
+  if (new Date(datetime).toString() == 'Invalid Date') {
     throw new Error('datetime is invalid.');
   }
   const properties = PropertiesService.getScriptProperties();
