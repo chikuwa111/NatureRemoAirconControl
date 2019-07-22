@@ -30,11 +30,11 @@ function cron() {
 
   if (onDatetime != null && new Date() > new Date(onDatetime)) {
     const text = on();
-    console.log(text);
+    Logger.log(text);
   }
   if (offDatetime != null && new Date() > new Date(offDatetime)) {
     const text = off();
-    console.log(text);
+    Logger.log(text);
   }
 }
 
